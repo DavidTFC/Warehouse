@@ -1,46 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Warehouse - Location A12</title>
+  <title>Warehouse - A12</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 50px;
       background-color: #f2f2f2;
+      text-align: center;
+      padding: 40px;
     }
     .container {
       background: white;
-      display: inline-block;
       padding: 30px;
       border-radius: 10px;
+      display: inline-block;
       box-shadow: 0 0 10px #ccc;
+      width: 90%;
+      max-width: 400px;
     }
     h1 {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
-    a.button {
+    .button {
       display: block;
-      width: 80%;
-      margin: 15px auto;
-      padding: 15px;
-      font-size: 18px;
-      background-color: #4CAF50;
-      color: white;
+      margin: 12px auto;
+      padding: 14px;
+      width: 90%;
+      font-size: 16px;
       text-decoration: none;
-      border-radius: 5px;
+      color: white;
+      border-radius: 6px;
     }
-    a.button.secondary {
-      background-color: #2196F3;
+    .en { background-color: #4CAF50; }
+    .nl { background-color: #f39c12; }
+    .pl { background-color: #2980b9; }
+    .lang-select {
+      margin-bottom: 20px;
     }
   </style>
+  <script>
+    function showLang(lang) {
+      document.getElementById('menu-en').style.display = lang === 'en' ? 'block' : 'none';
+      document.getElementById('menu-nl').style.display = lang === 'nl' ? 'block' : 'none';
+      document.getElementById('menu-pl').style.display = lang === 'pl' ? 'block' : 'none';
+      document.getElementById('lang-select').style.display = 'none';
+    }
+  </script>
 </head>
 <body>
   <div class="container">
     <h1>Location: A12</h1>
-    <a class="button" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pubhtml" target="_blank">View Inventory</a>
-    <a class="button secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSemvAtMe4RvBZfh1Lu8AcwPWPKuSZhLSM49j9nvKCiY48jniw/viewform?usp=pp_url&entry.709047007=A12" target="_blank">Add / Remove Stock</a>
+    <div id="lang-select" class="lang-select">
+      <p>Select language / Kies een taal / Wybierz język:</p>
+      <button class="button en" onclick="showLang('en')">🇬🇧 English</button>
+      <button class="button nl" onclick="showLang('nl')">🇳🇱 Nederlands</button>
+      <button class="button pl" onclick="showLang('pl')">🇵🇱 Polski</button>
+    </div>
+
+    <div id="menu-en" style="display:none">
+      <a class="button en" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pubhtml" target="_blank">📦 View Inventory</a>
+      <a class="button en" href="https://docs.google.com/forms/d/e/1FAIpQLSemvAtMe4RvBZfh1Lu8AcwPWPKuSZhLSM49j9nvKCiY48jniw/viewform?usp=pp_url&entry.709047007=A12" target="_blank">➕ Add / Remove Stock</a>
+    </div>
+    <div id="menu-nl" style="display:none">
+      <a class="button nl" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pubhtml" target="_blank">📦 Voorraad bekijken</a>
+      <a class="button nl" href="https://docs.google.com/forms/d/e/1FAIpQLSemvAtMe4RvBZfh1Lu8AcwPWPKuSZhLSM49j9nvKCiY48jniw/viewform?usp=pp_url&entry.709047007=A12" target="_blank">➕ Toevoegen / Verwijderen</a>
+    </div>
+    <div id="menu-pl" style="display:none">
+      <a class="button pl" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pubhtml" target="_blank">📦 Zobacz stan magazynowy</a>
+      <a class="button pl" href="https://docs.google.com/forms/d/e/1FAIpQLSemvAtMe4RvBZfh1Lu8AcwPWPKuSZhLSM49j9nvKCiY48jniw/viewform?usp=pp_url&entry.709047007=A12" target="_blank">➕ Dodaj / usuń etykiety</a>
+    </div>
   </div>
 </body>
 </html>
