@@ -2,74 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Warehouse - A1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A1 - Warehouse Menu</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
       text-align: center;
-      padding: 40px;
-    }
-    .container {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      display: inline-block;
-      box-shadow: 0 0 10px #ccc;
-      width: 90%;
-      max-width: 400px;
+      padding: 40px 10px;
+      background-color: #f9f9f9;
     }
     h1 {
-      margin-bottom: 20px;
+      font-size: 3.6rem;
+      margin-bottom: 60px;
     }
     .button {
       display: block;
-      margin: 12px auto;
-      padding: 14px;
-      width: 90%;
-      font-size: 16px;
-      text-decoration: none;
+      width: 98%;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 80px 40px;
+      font-size: 5rem;
+      background-color: #007BFF;
       color: white;
-      border-radius: 6px;
+      text-decoration: none;
+      border-radius: 40px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
-    .en { background-color: #4CAF50; }
-    .nl { background-color: #f39c12; }
-    .pl { background-color: #2980b9; }
-    .lang-select {
-      margin-bottom: 20px;
+    .button:hover {
+      background-color: #0056b3;
+    }
+    .language-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      margin-top: 80px;
+    }
+    .lang-button {
+      font-size: 4rem;
+      padding: 50px 70px;
+      border-radius: 30px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      width: 90%;
+      max-width: 600px;
+    }
+    .lang-button:hover {
+      background-color: #1e7e34;
     }
   </style>
-  <script>
-    function showLang(lang) {
-      document.getElementById('menu-en').style.display = lang === 'en' ? 'block' : 'none';
-      document.getElementById('menu-nl').style.display = lang === 'nl' ? 'block' : 'none';
-      document.getElementById('menu-pl').style.display = lang === 'pl' ? 'block' : 'none';
-      document.getElementById('lang-select').style.display = 'none';
-    }
-  </script>
 </head>
 <body>
-  <div class="container">
-    <h1>Location: A1</h1>
-    <div id="lang-select" class="lang-select">
-      <p>Select language / Kies een taal / Wybierz język:</p>
-      <button class="button en" onclick="showLang('en')">🇬🇧 English</button>
-      <button class="button nl" onclick="showLang('nl')">🇳🇱 Nederlands</button>
-      <button class="button pl" onclick="showLang('pl')">🇵🇱 Polski</button>
-    </div>
-
-    <div id="menu-en" style="display:none">
-      <a class="button en" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pubhtml" target="_blank">📦 View Inventory</a>
-      <a class="button en" href="https://docs.google.com/forms/d/e/1FAIpQLSemvAtMe4RvBZfh1Lu8AcwPWPKuSZhLSM49j9nvKCiY48jniw/viewform?usp=pp_url&entry.709047007=A1" target="_blank">➕ Add / Remove Stock</a>
-    </div>
-    <div id="menu-nl" style="display:none">
-      <a class="button nl" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pubhtml" target="_blank">📦 Voorraad bekijken</a>
-      <a class="button nl" href="https://docs.google.com/forms/d/e/1FAIpQLSemvAtMe4RvBZfh1Lu8AcwPWPKuSZhLSM49j9nvKCiY48jniw/viewform?usp=pp_url&entry.709047007=A1" target="_blank">➕ Toevoegen / Verwijderen</a>
-    </div>
-    <div id="menu-pl" style="display:none">
-      <a class="button pl" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pubhtml" target="_blank">📦 Zobacz stan magazynowy</a>
-      <a class="button pl" href="https://docs.google.com/forms/d/e/1FAIpQLSemvAtMe4RvBZfh1Lu8AcwPWPKuSZhLSM49j9nvKCiY48jniw/viewform?usp=pp_url&entry.709047007=A1" target="_blank">➕ Dodaj / usuń etykiety</a>
-    </div>
+  <h1>Pallet Location: A1</h1>
+  <a class="button" href="https://forms.gle/zq6fXkPEnUijjWk47" target="_blank">➕ Add or Remove Stock</a>
+  <a class="button" href="https://lookerstudio.google.com/reporting/c03749b1-e75f-41d8-9f0d-4b6d9dc3b293/page/uqmOF" target="_blank">📦 View Inventory</a>
+  <div class="language-buttons">
+    <button class="lang-button">🇬🇧 English</button>
+    <button class="lang-button">🇳🇱 Nederlands</button>
+    <button class="lang-button">🇵🇱 Polski</button>
   </div>
 </body>
 </html>
