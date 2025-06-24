@@ -1,3 +1,45 @@
-<!-- G5 -->
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSfW97FoQv5DrYfW9Wh0g8dpjvPj5nWgKDV0rAOCB9L4K8pXxw/viewform?usp=pp_url&entry.1234567890=G5" target="_blank">➕ Add/Remove Stock (G5)</a><br>
-<a href="https://lookerstudio.google.com/reporting/c03749b1-e75f-41d8-9f0d-4b6d9dc3b293/page/p_mz7m7pbqtd" target="_blank">📊 View Inventory (G5)</a><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warehouse Location G5</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      font-size: 18px;
+    }
+    a {
+      display: block;
+      margin: 20px 0;
+      padding: 14px;
+      background: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📦 Warehouse Location G5</h1>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfW97FoQv5DrYfW9Wh0g8dpjvPj5nWgKDV0rAOCB9L4K8pXxw/viewform?usp=pp_url&entry.1234567890=G5" target="_blank" onclick="return handleClick(event, this.href)">
+    ➕ Add/Remove Stock
+  </a>
+  <a href="https://lookerstudio.google.com/reporting/c03749b1-e75f-41d8-9f0d-4b6d9dc3b293/page/p_mz7m7pbqtd" target="_blank" onclick="return handleClick(event, this.href)">
+    📊 View Inventory (Mobile Viewer)
+  </a>
+  <script>
+    function handleClick(event, url) {
+      try {
+        window.open(url, '_blank');
+      } catch (e) {
+        alert("⚠️ Link failed to open. Speak to David ASAP.");
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
