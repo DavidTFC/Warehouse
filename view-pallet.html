@@ -46,8 +46,9 @@
     <button onclick="showTable()">Table View</button>
     <button onclick="showCards()">Card View</button>
   </div>
-  <div id="tableView"></div>
-  <div id="cardView" class="hidden"></div>
+  <div id="tableView" class="hidden"></div>
+  <div id="noDataMessage" style="display:none;color:red;font-weight:bold;margin-top:1rem;"></div>
+  <div id="cardView"></div>
   <script>
     const palletParam = new URLSearchParams(window.location.search).get("pallet");
     const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pub?gid=1181568901&single=true&output=csv";
@@ -140,8 +141,8 @@
     }
 
     function showTable() {
-      document.getElementById("tableView").classList.remove("hidden");
-      document.getElementById("cardView").classList.add("hidden");
+      document.getElementById("cardView").classList.remove("hidden");
+      document.getElementById("tableView").classList.add("hidden");
     }
 
     function showCards() {
@@ -151,8 +152,13 @@
 
     fetchCSV(sheetUrl).then(data => {
       const summary = calculateQuantities(data);
-      renderTable(summary);
-      renderCards(summary);
+      if (summary.length === 0) {
+        document.getElementById("noDataMessage").style.display = "block";
+        document.getElementById("noDataMessage").innerText = `No data found for Pallet ID ${palletParam}. Please check the ID or wait for receiving.`;
+      } else {
+        renderTable(summary);
+        renderCards(summary);
+      }
     });
   </script>
 </body>
