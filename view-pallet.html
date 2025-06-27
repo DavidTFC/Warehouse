@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pallet Overview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    #toggle {
+      margin-bottom: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: left;
+    }
+    .card {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="title">Pallet Information</h1>
+  <div id="toggle">
+    <button onclick="showTable()">Table View</button>
+    <button onclick="showCards()">Card View</button>
+  </div>
+  <div id="tableView"></div>
+  <div id="cardView" class="hidden"></div>
+  <script>
+    const palletParam = new URLSearchParams(window.location.search).get("pallet");
+    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pub?gid=1181568901&single=true&output=csv";
+
+    document.getElementById("title").innerText = `Pallet ID: ${palletParam}`;
+
+    async function fetchCSV(url) {
+      const response = await fetch(url);
+      const text = await response.text();
+      const [header, ...rows] = text.trim().split("\n").map(row => row.split(","));
+      return rows.map(row => Object.fromEntries(row.map((cell, i) => [header[i], cell])));
+    }
+
+    function calculateQuantities(data) {
+      const filtered = data.filter(row => row["Pallet ID"] === palletParam);
+      const summary = {};
+
+      filtered.forEach(row => {
+        const key = row["Product"] + "|" + row["Batch Number"];
+        const qty = parseInt(row["Quantity (boxes)"] || "0");
+        if (!summary[key]) {
+          summary[key] = {
+            product: row["Product"],
+            batch: row["Batch Number"],
+            rolls: row["Rolls per box"],
+            stickers: row["Stickers per box"],
+            client: row["Client "],
+            original: 0,
+            removed: 0
+          };
+        }
+        if (row["Action"] === "Receiving in Warehouse") {
+          summary[key].original += qty;
+        } else if (row["Action"] === "Removing from Storage") {
+          summary[key].removed += qty;
+        }
+      });
+
+      return Object.values(summary).map(item => ({
+        ...item,
+        remaining: item.original - item.removed
+      }));
+    }
+
+    function renderTable(data) {
+      const table = document.createElement("table");
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Batch</th>
+            <th>Original Qty</th>
+            <th>Remaining Qty</th>
+            <th>Rolls/Box</th>
+            <th>Stickers/Box</th>
+            <th>Client</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${data.map(d => `
+            <tr>
+              <td>${d.product}</td>
+              <td>${d.batch}</td>
+              <td>${d.original}</td>
+              <td>${d.remaining}</td>
+              <td>${d.rolls}</td>
+              <td>${d.stickers}</td>
+              <td>${d.client}</td>
+            </tr>
+          `).join("")}
+        </tbody>`;
+      document.getElementById("tableView").appendChild(table);
+    }
+
+    function renderCards(data) {
+      const container = document.getElementById("cardView");
+      data.forEach(d => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <strong>🧾 Product:</strong> ${d.product}<br>
+          <strong>📦 Batch:</strong> ${d.batch}<br>
+          <strong>📈 Original Quantity:</strong> ${d.original} boxes<br>
+          <strong>📉 Remaining:</strong> ${d.remaining} boxes<br>
+          <strong>🎯 Client:</strong> ${d.client}<br>
+          <strong>🎲 Rolls/Box:</strong> ${d.rolls} | 🏷️ Stickers/Box: ${d.stickers}<br>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function showTable() {
+      document.getElementById("tableView").classList.remove("hidden");
+      document.getElementById("cardView").classList.add("hidden");
+    }
+
+    function showCards() {
+      document.getElementById("cardView").classList.remove("hidden");
+      document.getElementById("tableView").classList.add("hidden");
+    }
+
+    fetchCSV(sheetUrl).then(data => {
+      const summary = calculateQuantities(data);
+      renderTable(summary);
+      renderCards(summary);
+    });
+  </script>
+</body>
+</html>
