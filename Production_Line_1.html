@@ -3,43 +3,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Production Line 1</title>
+  <title>Production - Scan to Enter</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f8f9fa;
       text-align: center;
-      padding: 40px;
+      padding: 50px;
     }
     h1 {
-      font-size: 28px;
-      color: #333;
+      font-size: 36px;
+      margin-bottom: 40px;
     }
     .button-container {
-      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
     }
-    a.button {
-      display: inline-block;
-      padding: 15px 25px;
-      margin: 10px;
-      font-size: 18px;
-      color: white;
-      background-color: #28a745;
-      border-radius: 8px;
+    .big-button {
+      transform: scale(2.5);
+      transform-origin: center;
+    }
+    .button-container a {
       text-decoration: none;
     }
-    a.button:hover {
-      background-color: #1e7e34;
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      background-color: #2E86C1;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1B4F72;
     }
   </style>
 </head>
 <body>
-  <h1>🧃 Production Line 1</h1>
-  <p>Use this page to log goods used in production.</p>
-
+  <h1>Production Line 1</h1>
+  <p>Scan to enter boxes at production location</p>
   <div class="button-container">
-    <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSemvAtMe4RvBZfh1Lu8AcwPWPKuSZhLSM49j9nvKCiY48jniw/viewform?usp=pp_url&entry.709047007=Production+Line+1&entry.1389050815=Production" target="_blank">
-      ➕ Log Production Use
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSemvAtMe4RvBZfh1Lu8AcwPWPKuSZhLSM49j9nvKCiY48jniw/viewform?usp=pp_url&entry.709047007=Production1" target="_blank">
+      <button class="big-button">Enter Boxes</button>
+    </a>
+    <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pubhtml" target="_blank">
+      <button class="big-button">View Inventory</button>
     </a>
   </div>
 </body>
