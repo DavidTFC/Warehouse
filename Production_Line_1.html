@@ -2,54 +2,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Production - Scan to Enter</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Production Pallet</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 50px;
+      padding: 40px;
+      background-color: #f5f5f5;
     }
+
     h1 {
-      font-size: 36px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
-    .button-container {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-    }
-    .big-button {
-      transform: scale(2.5);
-      transform-origin: center;
-    }
-    .button-container a {
+
+    .button {
+      display: block;
+      width: 80%;
+      max-width: 300px;
+      margin: 20px auto;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
       text-decoration: none;
     }
-    button {
-      padding: 10px 20px;
-      font-size: 18px;
-      border: none;
-      background-color: #2E86C1;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #1B4F72;
+
+    .button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-  <h1>Production Line 1</h1>
-  <p>Scan to enter boxes at production location</p>
-  <div class="button-container">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSemvAtMe4RvBZfh1Lu8AcwPWPKuSZhLSM49j9nvKCiY48jniw/viewform?usp=pp_url&entry.709047007=Production1" target="_blank">
-      <button class="big-button">Enter Boxes</button>
-    </a>
-    <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pubhtml" target="_blank">
-      <button class="big-button">View Inventory</button>
-    </a>
-  </div>
+  <h1>Production Pallet</h1>
+
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSemvAtMe4RvBZfh1Lu8AcwPWPKuSZhLSM49j9nvKCiY48jniw/viewform?usp=pp_url&entry.1873423851=Production" class="button">Add or Remove Stock</a>
+
+  <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRLWCfWmmAX85aOdH1wt_XAlaY5jFVKmnA8dN9vqyIu1nJUBO5zQ6ayVCuW2i2Cmx6eQ1sKvo_KtC_V/pubhtml" class="button">View Inventory</a>
+
 </body>
 </html>
