@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Warehouse Location C29</title>
+  <style>
+    body{font-family:Arial, sans-serif;text-align:center;padding:40px;font-size:18px}
+    .btn{display:block;margin:20px 0;padding:14px;background:#007BFF;color:#fff;text-decoration:none;border-radius:10px;font-size:18px}
+    .sub{opacity:.75;font-size:14px;margin-top:-8px}
+    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;background:#111;color:#fff;padding:10px 14px;border-radius:8px;display:none}
+  </style>
+</head>
+<body>
+  <h1>📦 Warehouse Location <strong>C29</strong></h1>
+
+  <a class="btn" id="openForm"
+     href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=1TjwVQ8XH0e-MBmMh4bYYP8Gb-HajFpEojTU8KQI7uxUM1YzODJQMVVEN0daNkY1OEs1ME85MU0zWC4u"
+     target="_blank" rel="noopener">
+    ➕ Add / Remove Stock
+  </a>
+  <div class="sub">Location <b>C29</b> copied to clipboard ↑</div>
+
+  <div id="toast" class="toast">C29 copied to clipboard</div>
+
+  <script>
+    const LOCATION_CODE = "C29"; 
+
+    function showToast(msg){
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.style.display='block';
+      setTimeout(()=> t.style.display='none', 1600);
+    }
+
+    async function copyLocation(){
+      try{
+        await navigator.clipboard.writeText(LOCATION_CODE);
+        showToast(`${LOCATION_CODE} copied to clipboard`);
+      }catch(e){}
+    }
+
+    copyLocation();
+    document.getElementById('openForm').addEventListener('click', copyLocation);
+  </script>
+</body>
+</html>
